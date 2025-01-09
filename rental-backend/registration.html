@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Apartment Rentals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .register-container {
+            background: #fff;
+            padding: 2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .register-container h2 {
+            margin-bottom: 1.5em;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1em;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 0.8em;
+            margin-top: 0.2em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        select {
+            width: 100%;
+            padding: 0.8em;
+            margin-top: 0.2em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 0.8em;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+        }
+        .success {
+            color: green;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="user_type">User Type</label>
+                <select id="user_type" name="user_type" required>
+                    <option value="landlord">Landlord</option>
+                    <option value="tenant">Tenant</option>
+                </select>
+            </div>
+            <button type="submit">Register</button>
+            <p class="error" id="error"></p>
+            <p class="success" id="success"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const user_type = document.getElementById('user_type').value;
+
+            // Clear any previous error or success messages
+            document.getElementById('error').textContent = '';
+            document.getElementById('success').textContent = '';
+
+            // Create the data object
+            const userData = {
+                username: username,
+                password: password,
+                email: email,
+                phone: phone,
+                user_type: user_type
+            };
+
+            // Send a POST request to the backend
+            fetch('http://localhost:3000/register', {  // Removed the proxy
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'User registered successfully') {
+                    // Show success message
+                    document.getElementById('success').textContent = 'Registration successful! Please log in.';
+                } else {
+                    // Show error message
+                    document.getElementById('error').textContent = data.message || 'An error occurred.';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('error').textContent = 'An error occurred. Please try again.';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landlord Dashboard - Apartment Rentals</title>
+    <style>
+        /* Add your CSS here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            padding: 2em;
+        }
+        .section {
+            margin-bottom: 2em;
+        }
+        form {
+            margin-top: 1em;
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 1em;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.8em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Register New Tenant Section -->
+        <div id="tenants" class="section">
+            <h2>Manage Tenants</h2>
+            
+            <!-- Register New Tenant -->
+            <h3>Register New Tenant</h3>
+            <form id="registerTenantForm">
+                <label for="tenantName">Tenant Name</label>
+                <input type="text" id="tenantName" required><br>
+                <label for="tenantEmail">Tenant Email</label>
+                <input type="email" id="tenantEmail" required><br>
+                <label for="tenantPhone">Tenant Phone</label>
+                <input type="text" id="tenantPhone" required><br>
+                <button type="submit">Register Tenant</button>
+            </form>
+
+            <div id="registrationStatus"></div>
+        </div>
+
+        <!-- Record Payment Section -->
+        <div id="payment" class="section">
+            <h3>Record Payment</h3>
+            <form id="recordPaymentForm">
+                <label for="tenantSelect">Select Tenant</label>
+                <select id="tenantSelect">
+                    <!-- Dynamically populate with tenant names -->
+                    <option value="tenant1">Tenant 1</option>
+                    <option value="tenant2">Tenant 2</option>
+                </select><br>
+
+                <label for="paymentAmount">Amount</label>
+                <input type="number" id="paymentAmount" required><br>
+                <label for="paymentDate">Payment Date</label>
+                <input type="date" id="paymentDate" required><br>
+                <button type="submit">Record Payment</button>
+            </form>
+
+            <div id="paymentStatus"></div>
+        </div>
+
+        <!-- Generate Receipt Section -->
+        <div id="receipt" class="section">
+            <button id="generateReceipt">Generate Receipt</button>
+            <div id="receiptDetails"></div>
+        </div>
+    </div>
+
+    <script>
+        // Register Tenant functionality
+        document.getElementById('registerTenantForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('tenantName').value;
+            const email = document.getElementById('tenantEmail').value;
+            const phone = document.getElementById('tenantPhone').value;
+
+            document.getElementById('registrationStatus').textContent = `Tenant ${name} has been registered successfully!`;
+            
+            document.getElementById('registerTenantForm').reset();
+        });
+
+        // Record Payment functionality
+        document.getElementById('recordPaymentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const tenant = document.getElementById('tenantSelect').value;
+            const amount = document.getElementById('paymentAmount').value;
+            const date = document.getElementById('paymentDate').value;
+
+            document.getElementById('paymentStatus').textContent = `Payment of $${amount} from ${tenant} recorded on ${date}.`;
+
+            document.getElementById('recordPaymentForm').reset();
+        });
+
+        // Generate Receipt functionality
+        document.getElementById('generateReceipt').addEventListener('click', function() {
+            const tenant = document.getElementById('tenantSelect').value;
+            const amount = document.getElementById('paymentAmount').value;
+            const date = document.getElementById('paymentDate').value;
+
+            document.getElementById('receiptDetails').innerHTML = `
+                <h3>Receipt for ${tenant}</h3>
+                <p>Amount Paid: $${amount}</p>
+                <p>Payment Date: ${date}</p>
+                <p>Receipt Generated Successfully!</p>
+            `;
+        });
+    </script>
+</body>
+</html>

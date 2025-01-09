@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenant Dashboard - Apartment Rentals</title>
+    <style>
+        /* Add your CSS here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            padding: 2em;
+        }
+        .section {
+            margin-bottom: 2em;
+        }
+        form {
+            margin-top: 1em;
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 1em;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.8em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        table {
+            width: 100%;
+            margin-top: 1em;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 1em;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Tenant's Personal Information Section -->
+        <div id="personal-info" class="section">
+            <h2>Your Personal Information</h2>
+            <form id="personalInfoForm">
+                <label for="tenantName">Tenant Name</label>
+                <input type="text" id="tenantName" value="John Doe" disabled><br>
+
+                <label for="tenantEmail">Tenant Email</label>
+                <input type="email" id="tenantEmail" value="johndoe@example.com" disabled><br>
+
+                <label for="tenantPhone">Tenant Phone</label>
+                <input type="text" id="tenantPhone" value="123-456-7890" disabled><br>
+
+                <button type="button" id="editPersonalInfo">Edit Info</button>
+            </form>
+
+            <div id="personalInfoStatus"></div>
+        </div>
+
+        <!-- Tenant's Payment History Section -->
+        <div id="payment-history" class="section">
+            <h2>Your Payment History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="paymentHistoryTable">
+                    <tr>
+                        <td>2025-01-01</td>
+                        <td>$1,200</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>2024-12-01</td>
+                        <td>$1,200</td>
+                        <td>Paid</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="button" id="viewReceiptButton">View Receipt</button>
+            <div id="receiptDetails"></div>
+        </div>
+    </div>
+
+    <script>
+        // Handle Edit Tenant Personal Information
+        document.getElementById('editPersonalInfo').addEventListener('click', function() {
+            document.getElementById('tenantName').disabled = false;
+            document.getElementById('tenantEmail').disabled = false;
+            document.getElementById('tenantPhone').disabled = false;
+
+            this.textContent = 'Save Info';
+            this.id = 'savePersonalInfo';
+        });
+
+        document.getElementById('personalInfoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('personalInfoStatus').textContent = 'Your information has been updated successfully!';
+        });
+
+        // Handle Payment History Table
+        document.getElementById('viewReceiptButton').addEventListener('click', function() {
+            // In a real app, you'd fetch the receipt data here.
+            document.getElementById('receiptDetails').innerHTML = `
+                <h3>Your Payment Receipt</h3>
+                <p>Amount Paid: $1,200</p>
+                <p>Payment Date: 2025-01-01</p>
+                <p>Status: Paid</p>
+                <p>Receipt Generated Successfully!</p>
+            `;
+        });
+    </script>
+</body>
+</html>
