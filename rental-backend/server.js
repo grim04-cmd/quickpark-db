@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root', // Your MySQL username
-    password: '!!@@04Grii.im04@@!!', // Your MySQL password
+    password: 'qwerty@254.', // Your MySQL password
     database: 'rentals'
 });
 
@@ -41,7 +41,11 @@ app.post('/login', (req, res) => {
                         'secretkey',
                         { expiresIn: '1h' }
                     );
-                    res.json({ message: 'Login successful', token });
+                    res.json({
+                        message: 'Login successful',
+                        token,
+                        user_type: result[0].user_type // Include user_type in the response
+                    });
                 } else {
                     res.status(400).json({ message: 'Invalid credentials' });
                 }
