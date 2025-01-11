@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Apartment Rentals</title>
+    <title>Login - CloverLeaf</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,20 +45,33 @@
         button {
             width: 100%;
             padding: 0.8em;
-            background-color: #333;
+            background-color: #0000FF; /* Consistent button color */
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #555;
+            background-color: #333; /* Dark hover color for contrast */
         }
         .error {
             color: red;
             font-size: 0.9em;
             margin-top: 0.5em;
         }
+        <footer>
+    <p>&copy; 2025 CloverLeaf. All rights reserved.</p>
+    <p>Contact us: mwangiedwin602@gmail.com | 0739705416</p>
+    <div style="margin-top: 1em;">
+        <h3>Ready to get started?</h3>
+        <a href="login.html" style="text-decoration: none; margin-right: 10px;">
+            <button style="padding: 10px 20px; background-color: #0000FF; color: #fff; border: none; cursor: pointer;">Login</button>
+        </a>
+        <a href="signup.html" style="text-decoration: none;">
+            <button style="padding: 10px 20px; background-color: #0000FF; color: #fff; border: none; cursor: pointer;">Sign Up</button>
+        </a>
+    </div>
+</footer>
     </style>
 </head>
 <body>
@@ -76,9 +89,9 @@
             <button type="submit">Login</button>
             <p class="error" id="error"></p>
         </form>
+        <footer>
+            &copy; 2025 CloverLeaf. All rights reserved.
+        </footer>
     </div>
-    
-    <script src="index.js">
-    </script>
 </body>
 </html>

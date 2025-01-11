@@ -1,58 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apartment Rentals</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1em 0;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 1em;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
-        .container {
-            padding: 2em;
-        }
-        .listings {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1em;
-        }
-        .listing {
-            border: 1px solid #ddd;
-            padding: 1em;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            margin-top: 2em;
-        }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Apartment Rentals</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            header {
+                    background-color: #0000FF; /* Blue color for the header */
+                    color: #fff; /* White text for contrast */
+                    padding: 1em 0;
+                    text-align: center;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #0000FF; /* Blue background for the navigation bar */
+}
+
+nav a {
+    color: #fff; /* White text for better contrast */
+    text-decoration: none;
+    padding: 1em;
+}
+
+nav a:hover {
+    background-color: #555; /* Optional: Darker hover effect for links */
+}
+            .container {
+                padding: 2em;
+            }
+            .listings {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1em;
+            }
+            .listing {
+                border: 1px solid #ddd;
+                padding: 1em;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            footer {
+                background-color: #0000FF; /* Blue color for the footer */
+                color: #fff; /* White text for contrast */
+                text-align: center;
+                padding: 1em 0;
+                margin-top: 2em;
+}
+        </style>
+    </head>
 <body>
 
 <header>
@@ -83,15 +85,15 @@
     <h2>Available Listings</h2>
     <div class="listings">
         <div class="listing">
-            <h3>Apartment 1</h3>
-            <p>Location: Downtown</p>
-            <p>Price: $1,200/month</p>
+            <h3>Quick-Park Village Plaza</h3>
+            <p>Location: Memphis Court</p>
+            <p>Price: KES 5,000  - KES10,000/month</p>
             <button>Book Now</button>
         </div>
         <div class="listing">
-            <h3>Apartment 2</h3>
-            <p>Location: Suburbs</p>
-            <p>Price: $900/month</p>
+            <h3>Amani</h3>
+            <p>Location: Amani Court</p>
+            <p>Price: KES 5,000  - KES10,000/month</p>
             <button>Book Now</button>
         </div>
     </div>
@@ -100,7 +102,7 @@
 <div id="faq" class="container">
     <h2>FAQ</h2>
     <p><strong>Q: How do I book an apartment?</strong><br>A: Simply click the "Book Now" button on the listing page.</p>
-    <p><strong>Q: What payment methods are accepted?</strong><br>A: We accept credit cards and online payments.</p>
+    <p><strong>Q: What payment methods are accepted?</strong><br>A: We accept online payments through M-PESA.</p>
 </div>
 
 <div id="contact" class="container">
