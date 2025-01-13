@@ -140,8 +140,21 @@
             .then(response => response.json())
             .then(data => {
                 if (data.message === 'User registered successfully') {
-                    // Show success message
-                    document.getElementById('success').textContent = 'Registration successful! Please log in.';
+                    let link = document.createElement('a');
+                    let message = document.createElement('p');
+                    let messageText = document.createTextNode('Registration successful! ');
+                    let message2 = document.createTextNode('log in');
+                    
+                    link.href = 'login.html';
+                    link.style.color = 'cyan'; // Apply style to the link
+                    link.appendChild(message2);
+                    
+                    message.appendChild(messageText);
+                    message.appendChild(link);
+                    
+                    // Clear any previous success message
+                    document.getElementById('success').textContent = '';
+                    document.getElementById('success').appendChild(message);
                 } else {
                     // Show error message
                     document.getElementById('error').textContent = data.message || 'An error occurred.';
